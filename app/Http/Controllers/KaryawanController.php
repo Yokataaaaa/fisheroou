@@ -31,7 +31,7 @@ class KaryawanController extends Controller
         Excel::import(new KaryawanImport, $request->file('file'));
 
         // Redirect kembali dengan pesan sukses
-        return redirect()->route('karyawan.index')->with('message', 'Data karyawan berhasil diimpor');
+        return redirect()->route('admin.karyawan')->with('message', 'Data karyawan berhasil diimpor');
     }
 
     // Method untuk menghapus karyawan
@@ -42,13 +42,13 @@ class KaryawanController extends Controller
 
         // Jika data karyawan tidak ditemukan
         if (!$karyawan) {
-            return redirect()->route('karyawan.index')->with('error', 'Data karyawan tidak ditemukan.');
+            return redirect()->route('admin.karyawan')->with('error', 'Data karyawan tidak ditemukan.');
         }
 
         // Menghapus data karyawan
         $karyawan->delete();
 
         // Redirect kembali dengan pesan sukses
-        return redirect()->route('karyawan.index')->with('message', 'Data karyawan berhasil dihapus.');
+        return redirect()->route('admin.karyawan')->with('message', 'Data karyawan berhasil dihapus.');
     }
 }
