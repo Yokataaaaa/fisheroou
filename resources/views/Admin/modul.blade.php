@@ -43,25 +43,24 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="{{ url('Dashboard.html') }}" class="logo">
-                        <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large">
+                    <a href="{{ route('admin.dashboard') }}" class="logo">
+                        <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large" height="500">
                     </a>
                 </div>
             </div>
-
             <div class="sidebar-inner niceScrollleft">
                 <div id="sidebar-menu">
                     <ul>
                         <li class="menu-title">Home</li>
                         <li>
-                            <a href="{{ url('Dashboard.html') }}" class="waves-effect">
+                            <a href="{{ route('admin.dashboard') }}" class="waves-effect">
                                 <i class="mdi mdi-airplay"></i>
                                 <span> Dashboard <span class="badge badge-pill badge-primary float-right"></span></span>
                             </a>
                         </li>
                         <li class="menu-title">Fitur</li>
                         <li>
-                            <a href="{{ url('Karyawan.html') }}" class="waves-effect"><i
+                            <a href="{{ route('admin.karyawan') }}" class="waves-effect"><i
                                     class="mdi mdi-account-multiple-plus"></i><span> Karyawan </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                         </li>
@@ -70,31 +69,31 @@
                                     Transaksi </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('Data Masuk.html') }}">Data Masuk</a></li>
-                                <li><a href="{{ url('Data Keluar.html') }}">Data Keluar</a></li>
+                                <li><a href="{{ route('data_masuk') }}">Data Masuk</a></li>
+                                <li><a href="{{ route('data_keluar') }}">Data Keluar</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ url('Produk.html') }}" class="waves-effect"><i class="ti ti-package"></i><span>
+                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i class="ti ti-package"></i><span>
                                     Produk </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                         </li>
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect active"><i class="ti ti-book"></i><span>
-                                    Modul </span> <span class="float-right"><i
-                                        class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="javascript:void(0);" class="waves-effect"><i class="ti ti-book"></i><span> Modul
+                                </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
                                 <li><a href="{{ route('admin.modul') }}">Modul</a></li>
                                 <li><a href="{{ route('admin.tambah_modul') }}">Tambah Modul</a></li>
                             </ul>
                         </li>
+
                         <li class="has_sub">
-                            <a href="javascript:void(0 );" class="waves-effect"><i
+                            <a href="javascript:void(0);" class="waves-effect"><i
                                     class="mdi mdi-calendar-multiple-check"></i><span> Daily Task </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('Task.html') }}">Task</a></li>
-                                <li><a href="{{ url('Tambah Task.html') }}">Tambah Task</a></li>
+                                <li><a href="{{ route('admin.task') }}">Task</a></li>
+                                <li><a href="{{ route('admin.tambah_task') }}">Tambah Task</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -33,13 +33,14 @@ Route::middleware([CheckAuthToken::class])->group(function () {
 
     // Route untuk modul Karyawan
     Route::prefix('admin/karyawan')->group(function () {
-        Route::get('/', [KaryawanController::class, 'karyawan'])->name('admin.karyawan');
+        Route::get('/', [KaryawanController::class, 'index'])->name('admin.karyawan');
         Route::post('/tambah', [KaryawanController::class, 'tambahKaryawan'])->name('karyawan.tambah');
         Route::get('/edit/{id}', [KaryawanController::class, 'editKaryawan'])->name('karyawan.edit');
         Route::put('/update/{id}', [KaryawanController::class, 'updateKaryawan'])->name('karyawan.update');
-        Route::delete('/hapus/{id}', [KaryawanController::class, 'hapusKaryawan'])->name('karyawan.destroy');
+        Route::delete('/hapus/{id}', [KaryawanController::class, 'destroy'])->name('karyawan.destroy');
         Route::post('/import', [KaryawanController::class, 'import'])->name('admin.karyawan.import');
     });
+
 
     // Route untuk modul Produk
     Route::prefix('admin/produk')->group(function () {
@@ -52,13 +53,13 @@ Route::middleware([CheckAuthToken::class])->group(function () {
     });
 
     // Daily Task Routes
-    
-        // Menampilkan halaman task harian
-        Route::get('/daily_task', [DailyTaskController::class, 'index'])->name('admin.task');
-        Route::get('/daily_task/create', [DailyTaskController::class, 'create'])->name('admin.tambah_task');
-        Route::post('/daily_task', [DailyTaskController::class, 'store'])->name('admin.task.store');
-        Route::put('/daily_task/{id}', [DailyTaskController::class, 'update'])->name('admin.task.update');
-        Route::delete('/daily_task/{id}', [DailyTaskController::class, 'destroy'])->name('admin.task.destroy');
+
+    // Menampilkan halaman task harian
+    Route::get('/daily_task', [DailyTaskController::class, 'index'])->name('admin.task');
+    Route::get('/daily_task/create', [DailyTaskController::class, 'create'])->name('admin.tambah_task');
+    Route::post('/daily_task', [DailyTaskController::class, 'store'])->name('admin.task.store');
+    Route::put('/daily_task/{id}', [DailyTaskController::class, 'update'])->name('admin.task.update');
+    Route::delete('/daily_task/{id}', [DailyTaskController::class, 'destroy'])->name('admin.task.destroy');
 
     // Modul Routes
     Route::get('/modul', [ModulController::class, 'index'])->name('modul.index');

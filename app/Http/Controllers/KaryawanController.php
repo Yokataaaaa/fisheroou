@@ -16,7 +16,7 @@ class KaryawanController extends Controller
         $karyawan = User::where('role', '!=', 'manager')->get();
 
         // Mengembalikan view dengan data karyawan
-        return view('karyawan.index', compact('karyawan'));
+        return view('admin.karyawan', compact('karyawan'));
     }
 
     // Method untuk mengimpor data karyawan

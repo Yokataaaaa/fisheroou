@@ -33,7 +33,7 @@
     <!-- Begin page -->
     <div id="wrapper">
         <!-- Left Sidebar Start -->
-        <div class="left side-menu">
+        <<div class="left side-menu">
             <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
                 <i class="ion-close"></i>
             </button>
