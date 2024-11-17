@@ -8,8 +8,9 @@
         "php": "^8.2",
         "guzzlehttp/guzzle": "^7.9",
         "laravel/framework": "^11.9",
+        "laravel/sanctum": "*",
         "laravel/tinker": "^2.9",
-        "maatwebsite/excel": "^3.1"
+        "maatwebsite/excel": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

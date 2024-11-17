@@ -166,10 +166,11 @@
                                 <div class="card">
                                     <div class="card-body table-responsive">
                                         <h5 class="header-title">Data Karyawan</h5>
+                        
                                         <!-- Form Import -->
-                                        <form action="{{ route('admin.karyawan.import') }}" method="POST"
-                                            enctype="multipart/form-data">
+                                        <form action="{{ route('karyawan.import') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
+                        
                                             @if ($errors->any())
                                                 <div class="alert alert-danger">
                                                     <ul>
@@ -179,24 +180,23 @@
                                                     </ul>
                                                 </div>
                                             @endif
-
+                        
                                             @if (session('message'))
                                                 <div class="alert alert-success">
                                                     {{ session('message') }}
                                                 </div>
                                             @endif
-
+                        
                                             <!-- Input file -->
                                             <div class="form-group">
                                                 <label for="file">Pilih File Excel:</label>
-                                                <input type="file" name="file" accept=".xls,.xlsx" required
-                                                    class="form-control">
+                                                <input type="file" name="file" accept=".xls,.xlsx" required class="form-control">
                                             </div>
-
+                        
                                             <!-- Tombol submit -->
                                             <button type="submit" class="btn btn-success">Import Data</button>
                                         </form>
-
+                        
                                         <!-- Tabel Karyawan -->
                                         <table id="datatable2" class="table">
                                             <thead>
@@ -210,17 +210,14 @@
                                                 @if (isset($karyawan))
                                                     @foreach($karyawan as $employee)
                                                         <tr>
-                                                            <td>{{ $employee['username'] }}</td>
-                                                            <td>{{ $employee['email'] }}</td>
+                                                            <td>{{ $employee->username }}</td>
+                                                            <td>{{ $employee->email }}</td>
                                                             <td>
-                                                                <form action="{{ route('karyawan.destroy', $employee['id']) }}"
+                                                                <!-- Form untuk menghapus karyawan -->
+                                                                <form action="{{ route('karyawan.destroy', $employee->id) }}"
                                                                     method="POST" onsubmit="return confirm('Are you sure?')">
                                                                     @csrf
                                                                     @method('DELETE')
-                                                                    @if(auth()->check())
-                                                                        <input type="hidden" name="api_token"
-                                                                            value="{{ auth()->user()->currentAccessToken()->plainTextToken }}">
-                                                                    @endif
                                                                     <button type="submit" class="btn btn-danger">Hapus</button>
                                                                 </form>
                                                             </td>

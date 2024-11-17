@@ -101,3 +101,8 @@ Route::middleware([CheckAuthToken::class])->group(function () {
 
     Route::get('/admin/tambah-modul', [ModulController::class, 'create'])->name('admin.tambah_modul');
 });
+
+
+Route::get('karyawan', [KaryawanController::class, 'index'])->name('karyawan.index');
+Route::post('karyawan/import', [KaryawanController::class, 'import'])->name('karyawan.import');
+Route::delete('karyawan/{id}', [KaryawanController::class, 'destroy'])->name('karyawan.destroy');
