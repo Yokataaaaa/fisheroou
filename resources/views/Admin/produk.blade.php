@@ -48,15 +48,12 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <!--<a href="index.html" class="logo"><i class="mdi mdi-assistant"></i> Zoter</a>-->
-                    <a href="Dashboard.html" class="logo">
-                        <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large">
+                    <a href="{{ route('admin.dashboard') }}" class="logo">
+                        <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large" height="500">
                     </a>
                 </div>
             </div>
-
             <div class="sidebar-inner niceScrollleft">
-
                 <div id="sidebar-menu">
                     <ul>
                         <li class="menu-title">Home</li>
@@ -77,14 +74,14 @@
                                     Transaksi </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="Data Masuk.html">Data Masuk</a></li>
-                                <li><a href="Data Keluar.html">Data Keluar</a></li>
+                                <li><a href="{{ route('data_masuk') }}">Data Masuk</a></li>
+                                <li><a href="{{ route('data_keluar') }}">Data Keluar</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('admin.produk') }}" class="waves-effect active"><i
-                                    class="ti ti-package"></i><span> Produk
-                                </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i class="ti ti-package"></i><span>
+                                    Produk </span> <span class="float-right"><i
+                                        class="mdi mdi-chevron-right"></i></span></a>
                         </li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti ti-book"></i><span> Modul
@@ -94,19 +91,21 @@
                                 <li><a href="{{ route('admin.tambah_modul') }}">Tambah Modul</a></li>
                             </ul>
                         </li>
+
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="mdi mdi-calendar-multiple-check"></i><span> Daily Task </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="Task.html">Task</a></li>
-                                <li><a href="Tambah Task.html">Tambah Task</a></li>
+                                <li><a href="{{ route('admin.task') }}">Task</a></li>
+                                <li><a href="{{ route('admin.tambah_task') }}">Tambah Task</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
             </div> <!-- end sidebarinner -->
+        </div> <!-- end sidebarinner -->
         </div>
         <!-- Left Sidebar End -->
 

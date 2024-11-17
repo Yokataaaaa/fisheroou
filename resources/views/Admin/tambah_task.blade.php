@@ -10,11 +10,11 @@
     <meta content="Mannatthemes" name="author" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/icons.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
 
 
 </head>
@@ -41,26 +41,24 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="Dashboard.html" class="logo">
-                        <img src="assets/images/LogoFIs.png" alt="" class="logo-large">
+                    <a href="{{ route('admin.dashboard') }}" class="logo">
+                        <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large" height="500">
                     </a>
                 </div>
             </div>
-
             <div class="sidebar-inner niceScrollleft">
-
                 <div id="sidebar-menu">
                     <ul>
                         <li class="menu-title">Home</li>
                         <li>
-                            <a href="Dashboard.html" class="waves-effect">
+                            <a href="{{ route('admin.dashboard') }}" class="waves-effect">
                                 <i class="mdi mdi-airplay"></i>
                                 <span> Dashboard <span class="badge badge-pill badge-primary float-right"></span></span>
                             </a>
                         </li>
                         <li class="menu-title">Fitur</li>
                         <li>
-                            <a href="Karyawan.html" class="waves-effect"><i
+                            <a href="{{ route('admin.karyawan') }}" class="waves-effect"><i
                                     class="mdi mdi-account-multiple-plus"></i><span> Karyawan </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                         </li>
@@ -69,13 +67,15 @@
                                     Transaksi </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="Data Masuk.html">Data Masuk</a></li>
-                                <li><a href="Data Keluar.html">Data Keluar</a></li>
+                                <li><a href="{{ route('data_masuk') }}">Data Masuk</a></li>
+                                <li><a href="{{ route('data_keluar') }}">Data Keluar</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a href="Produk.html" class="waves-effect"><i class="ti ti-package"></i><span> Produk
-                                </span> <span class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i
+                                    class="ti ti-package"></i><span>
+                                    Produk </span> <span class="float-right"><i
+                                        class="mdi mdi-chevron-right"></i></span></a>
                         </li>
                         <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i class="ti ti-book"></i><span> Modul
@@ -85,13 +85,14 @@
                                 <li><a href="{{ route('admin.tambah_modul') }}">Tambah Modul</a></li>
                             </ul>
                         </li>
+
                         <li class="has_sub">
-                            <a href="javascript:void(0);" class="waves-effect active"><i
+                            <a href="javascript:void(0);" class="waves-effect"><i
                                     class="mdi mdi-calendar-multiple-check"></i><span> Daily Task </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="Task.html">Task</a></li>
-                                <li><a href="Tambah Task.html">Tambah Task</a></li>
+                                <li><a href="{{ route('admin.task') }}">Task</a></li>
+                                <li><a href="{{ route('admin.tambah_task') }}">Tambah Task</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -150,7 +151,8 @@
                             <li class="list-inline-item dropdown notification-list">
                                 <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user"
                                     data-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false">
-                                    <img src="assets/images/users/avatar-1.jpg" alt="user" class="rounded-circle">
+                                    <img src="{{ asset('assets/images/users/avatar-1.jpg') }}" alt="user"
+                                        class="rounded-circle">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                                     <!-- item-->
@@ -199,60 +201,69 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-
                                         <h4 class="mt-0 header-title">Tambah Task</h4>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Nama
-                                                Karyawan</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" value="Masukkan Nama Karyawan"
-                                                    id="example-text-input">
+                                        <form action="{{ route('admin.task.store') }}" method="POST">
+                                            @csrf
+                                            <div class="form-group row">
+                                                <label for="nama_task" class="col-sm-2 col-form-label">Judul
+                                                    Tugas</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" type="text" name="nama_task"
+                                                        id="nama_task" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-datetime-local-input"
-                                                class="col-sm-2 col-form-label">Tenggat Waktu</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="datetime-local"
-                                                    value="2011-08-19T13:45:00" id="example-datetime-local-input">
+                                            <div class="form-group row">
+                                                <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi
+                                                    Tugas</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" name="deskripsi" id="deskripsi"
+                                                        rows="3"></textarea>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Judul
-                                                Tugas</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" value="Masukkan Judul Tugas"
-                                                    id="example-text-input">
+                                            <div class="form-group row">
+                                                <label for="status" class="col-sm-2 col-form-label">Status
+                                                    Penyelesaian</label>
+                                                <div class="col-sm-10">
+                                                    <select class="custom-select" name="status" id="status">
+                                                        <option value="pending">pending</option>
+                                                        <option value="completed">completed</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="example-text-input" class="col-sm-2 col-form-label">Deskripsi
-                                                Tugas</label>
-                                            <div class="col-sm-10">
-                                                <input class="form-control" type="text" value="Masukkan Judul Task"
-                                                    id="example-text-input">
+                                            <div class="form-group row">
+                                                <label for="karyawan_username" class="col-sm-2 col-form-label">Nama
+                                                    Karyawan</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" type="text" name="karyawan_username"
+                                                        id="karyawan_username" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label class="col-sm-2 col-form-label">Status Penyelesaian</label>
-                                            <div class="col-sm-10">
-                                                <select class="custom-select">
-                                                    <option>Pilih</option>
-                                                    <option>Belum dikerjakan</option>
-                                                    <option>Sudah dikerjakan</option>
-                                                </select>
+                                            <div class="form-group row">
+                                                <label for="due_date" class="col-sm-2 col-form-label">Tenggat
+                                                    Waktu</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" type="datetime-local" name="due_date"
+                                                        id="due_date" required>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="col-sm-10 offset-sm-2">
-                                                <button type="submit" href="Terkirim.html" class="btn btn-primary">Kirim
-                                                    Data</button>
+                                            <div class="form-group row">
+                                                <label for="completed" class="col-sm-2 col-form-label">Status
+                                                    Selesai</label>
+                                                <div class="col-sm-10">
+                                                    <input type="checkbox" name="completed" id="completed">
+                                                </div>
                                             </div>
-                                        </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-10 offset-sm-2">
+                                                    <button type="submit" class="btn btn-primary">Kirim Data</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div> <!-- content -->
@@ -266,18 +277,18 @@
 
 
     <!-- jQuery  -->
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/modernizr.min.js"></script>
-    <script src="assets/js/detect.js"></script>
-    <script src="assets/js/fastclick.js"></script>
-    <script src="assets/js/jquery.blockUI.js"></script>
-    <script src="assets/js/waves.js"></script>
-    <script src="assets/js/jquery.nicescroll.js"></script>
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/fastclick.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.blockUI.js') }}"></script>
+    <script src="{{ asset('assets/js/waves.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.nicescroll.js') }}"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
 
 </body>
 

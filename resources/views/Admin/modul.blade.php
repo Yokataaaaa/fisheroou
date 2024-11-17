@@ -201,24 +201,16 @@
                                         class="module-image">
                                     <div class="module-info">
 
-                                        <h3>{{ $modul['judul'] ?? 'Judul tidak tersedia' }}</h3>
-                                        <p>{{ $modul['deskripsi'] ?? 'Deskripsi tidak tersedia' }}</p>
+                                        <h4>{{ $modul['judul'] ?? 'Judul tidak tersedia' }}</h4>
                                     </div>
-                                        <div class="actions">
-                                            <button>Edit</button>
-
-                                            <form id="deleteForm{{ $modul['id'] }}"
-                                                action="{{ route('modul.destroy', $modul['id']) }}" method="POST"
-                                                style="display: inline;"
-                                                onsubmit="return confirmDelete(event, {{ $modul['id'] }})">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" style="display: none;"
-                                                    id="deleteButton{{ $modul['id'] }}">Hapus</button>
-                                            
-                                            <button onclick="openDeleteModal({{ $modul['id'] }})">Hapus</button>
-                                            </form>
-                                        </div>
+                                    <div class="actions">
+                                        <form action="{{ route('modul.destroy', $modul['id']) }}" method="POST"
+                                            style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                onclick="return confirm('Apakah Anda yakin ingin menghapus modul ini?')">Hapus</button>
+                                        </form>
                                     </div>
 
                                 </div>

@@ -40,7 +40,7 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="{{ url('admin.dashboard') }}" class="logo">
+                    <a href="{{ route('admin.dashboard') }}" class="logo">
                         <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large" height="500">
                     </a>
                 </div>
@@ -71,8 +71,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i
-                                    class="ti ti-package"></i><span>
+                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i class="ti ti-package"></i><span>
                                     Produk </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                         </li>
@@ -90,8 +89,8 @@
                                     class="mdi mdi-calendar-multiple-check"></i><span> Daily Task </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('task') }}">Task</a></li>
-                                <li><a href="{{ url('task.tambah') }}">Tambah Task</a></li>
+                                <li><a href="{{ route('admin.task') }}">Task</a></li>
+                                <li><a href="{{ route('admin.tambah_task') }}">Tambah Task</a></li>
                             </ul>
                         </li>
                     </ul>

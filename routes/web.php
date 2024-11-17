@@ -52,9 +52,13 @@ Route::middleware([CheckAuthToken::class])->group(function () {
     });
 
     // Daily Task Routes
-    Route::get('/daily_task', [DailyTaskController::class, 'index'])->name('daily_task.index');
-    Route::post('/daily_task', [DailyTaskController::class, 'store'])->name('daily_task.store');
-    Route::delete('/daily_task/{id}', [DailyTaskController::class, 'destroy'])->name('daily_task.destroy');
+    
+        // Menampilkan halaman task harian
+        Route::get('/daily_task', [DailyTaskController::class, 'index'])->name('admin.task');
+        Route::get('/daily_task/create', [DailyTaskController::class, 'create'])->name('admin.tambah_task');
+        Route::post('/daily_task', [DailyTaskController::class, 'store'])->name('admin.task.store');
+        Route::put('/daily_task/{id}', [DailyTaskController::class, 'update'])->name('admin.task.update');
+        Route::delete('/daily_task/{id}', [DailyTaskController::class, 'destroy'])->name('admin.task.destroy');
 
     // Modul Routes
     Route::get('/modul', [ModulController::class, 'index'])->name('modul.index');

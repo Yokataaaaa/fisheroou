@@ -41,7 +41,7 @@
             <!-- LOGO -->
             <div class="topbar-left">
                 <div class="text-center">
-                    <a href="{{ url('admin.dashboard') }}" class="logo">
+                    <a href="{{ route('admin.dashboard') }}" class="logo">
                         <img src="{{ asset('assets/images/LogoFIs.png') }}" class="logo-large" height="500">
                     </a>
                 </div>
@@ -84,13 +84,14 @@
                                 <li><a href="{{ route('admin.tambah_modul') }}">Tambah Modul</a></li>
                             </ul>
                         </li>
-                        <li class=" has_sub">
+
+                        <li class="has_sub">
                             <a href="javascript:void(0);" class="waves-effect"><i
                                     class="mdi mdi-calendar-multiple-check"></i><span> Daily Task </span> <span
                                     class="float-right"><i class="mdi mdi-chevron-right"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="{{ url('task') }}">Task</a></li>
-                                <li><a href="{{ url('task.tambah') }}">Tambah Task</a></li>
+                                <li><a href="{{ route('admin.task') }}">Task</a></li>
+                                <li><a href="{{ route('admin.tambah_task') }}">Tambah Task</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -165,8 +166,6 @@
                                 <div class="card">
                                     <div class="card-body table-responsive">
                                         <h5 class="header-title">Data Karyawan</h5>
-                                        <button id="addDataBtn" type="button" class="btn-karyawan">Tambah Data</button>
-
                                         <!-- Form Import -->
                                         <form action="{{ route('admin.karyawan.import') }}" method="POST"
                                             enctype="multipart/form-data">
