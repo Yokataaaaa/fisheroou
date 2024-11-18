@@ -262,7 +262,7 @@
                                             <thead>
                                                 <tr>
                                                     <th>Kolam</th>
-                                                    <th>Jenis Ikan</th>
+                                                    <th>Deskripsi</th>
                                                     <th>Jenis Kelamin</th>
                                                     <th>Jumlah Ikan</th>
                                                     <th>Jumlah Pakan</th>

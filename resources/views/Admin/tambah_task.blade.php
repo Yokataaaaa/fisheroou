@@ -208,10 +208,11 @@
                                                 <label for="nama_task" class="col-sm-2 col-form-label">Judul
                                                     Tugas</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text" name="nama_task"
+                                                    <input type="text" class="form-control" name="nama_task"
                                                         id="nama_task" required>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi
                                                     Tugas</label>
@@ -220,6 +221,7 @@
                                                         rows="3"></textarea>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label for="status" class="col-sm-2 col-form-label">Status
                                                     Penyelesaian</label>
@@ -230,35 +232,32 @@
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label for="karyawan_username" class="col-sm-2 col-form-label">Nama
                                                     Karyawan</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="text" name="karyawan_username"
+                                                    <input type="text" class="form-control" name="karyawan_username"
                                                         id="karyawan_username" required>
                                                 </div>
                                             </div>
+
                                             <div class="form-group row">
                                                 <label for="due_date" class="col-sm-2 col-form-label">Tenggat
                                                     Waktu</label>
                                                 <div class="col-sm-10">
-                                                    <input class="form-control" type="datetime-local" name="due_date"
+                                                    <input type="text" class="form-control" name="due_date"
                                                         id="due_date" required>
                                                 </div>
                                             </div>
-                                            <div class="form-group row">
-                                                <label for="completed" class="col-sm-2 col-form-label">Status
-                                                    Selesai</label>
-                                                <div class="col-sm-10">
-                                                    <input type="checkbox" name="completed" id="completed">
-                                                </div>
-                                            </div>
+
                                             <div class="form-group row">
                                                 <div class="col-sm-10 offset-sm-2">
                                                     <button type="submit" class="btn btn-primary">Kirim Data</button>
                                                 </div>
                                             </div>
                                         </form>
+
                                     </div>
                                 </div>
                             </div>

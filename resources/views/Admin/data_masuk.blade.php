@@ -260,8 +260,29 @@
                                             </div>
 
                                         </form>
-
                                     </div>
+                                    <div class="col-md-100">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Pakan</th>
+                                                <th>Deskripsi</th>
+                                                <th>Nama Kolam</th>
+                                                <th>Jumlah Pembelian</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($data as $penjualan)
+                                                <tr>
+                                                    <td>{{ $penjualan['nama_pakan'] }}</td>
+                                                    <td>{{ $penjualan['deskripsi'] }}</td>
+                                                    <td>{{ $penjualan['kolam_id'] }}</td>
+                                                    <td>{{ $penjualan['jumlah_pembelian'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
                                 </div>
                             </div> <!-- end col -->
                         </div> <!-- end row -->

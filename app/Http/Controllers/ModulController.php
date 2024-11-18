@@ -71,8 +71,8 @@ public function store(Request $request)
     $validated = $request->validate([
         'judul' => 'required|string|max:255',                   // Judul wajib diisi dan berupa string
         'deskripsi' => 'required|string|max:255',               // Deskripsi wajib diisi dan berupa string
-        'image_path' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Gambar opsional, tipe jpeg/png/jpg, max 2MB
-        'file_path' => 'nullable|mimes:pdf|max:10240',           // File opsional, tipe PDF, max 10MB
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Gambar opsional, tipe jpeg/png/jpg, max 2MB
+        'file' => 'nullable|mimes:pdf|max:10240',           // File opsional, tipe PDF, max 10MB
     ]);
 
     try {
@@ -83,19 +83,19 @@ public function store(Request $request)
         ];
 
         // Jika ada file gambar yang diunggah, simpan dan encode ke base64
-        if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
             $imageName = time() . '_' . $image->getClientOriginalName();
             $imagePath = $image->move(public_path('images'), $imageName); // Simpan gambar ke folder 'public/images'
-            $data['image_path'] = base64_encode(file_get_contents($imagePath));
+            $data['image'] = base64_encode(file_get_contents($imagePath));
         }
 
         // Jika ada file PDF yang diunggah, simpan dan encode ke base64
-        if ($request->hasFile('file_path')) {
-            $file = $request->file('file_path');
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = $file->move(public_path('modul'), $fileName); // Simpan file ke folder 'public/modul'
-            $data['file_path'] = base64_encode(file_get_contents($filePath));
+            $data['file'] = base64_encode(file_get_contents($filePath));
         }
 
         // Kirim data modul ke API eksternal

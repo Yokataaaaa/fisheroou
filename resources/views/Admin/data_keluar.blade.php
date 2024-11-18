@@ -70,7 +70,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i class="ti ti-package"></i><span>
+                            <a href="{{ route('admin.produk') }}" class="waves-effect"><i
+                                    class="ti ti-package"></i><span>
                                     Produk </span> <span class="float-right"><i
                                         class="mdi mdi-chevron-right"></i></span></a>
                         </li>
@@ -93,6 +94,7 @@
                             </ul>
                         </li>
                     </ul>
+
                 </div>
                 <div class="clearfix"></div>
             </div> <!-- end sidebarinner -->
@@ -253,6 +255,29 @@
                                             </div>
                                         </div>
                                     </form>
+
+                                </div>
+                                <div class="col-md-100">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Nama Ikan</th>
+                                                <th>Deskripsi</th>
+                                                <th>Nama Kolam</th>
+                                                <th>Jumlah Penjualan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach($data as $penjualan)
+                                                <tr>
+                                                    <td>{{ $penjualan['nama_ikan'] }}</td>
+                                                    <td>{{ $penjualan['deskripsi'] }}</td>
+                                                    <td>{{ $penjualan['kolam_id'] }}</td>
+                                                    <td>{{ $penjualan['jumlah_penjualan'] }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div> <!-- end col -->

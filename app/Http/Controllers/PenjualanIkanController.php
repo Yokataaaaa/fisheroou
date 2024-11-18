@@ -45,26 +45,61 @@ class PenjualanIkanController extends Controller
         }
     }
 
-    /**
-     * Menyimpan data penjualan ikan baru.
-     */
-    public function store(Request $request)
+    public function show($id)
     {
         $token = session('auth_token');
-    
-        // Cek jika token tidak ada
+
+        // Cek apakah token ada, jika tidak redirect ke halaman login
         if (!$token) {
             return redirect()->route('showLogin')
                 ->withErrors(['error' => 'Anda harus login terlebih dahulu.']);
         }
-    
+
         // Validasi token melalui API
         $validToken = $this->validateToken($token);
         if (!$validToken) {
             return redirect()->route('showLogin')
                 ->withErrors(['error' => 'Token tidak valid, silakan login kembali.']);
         }
-    
+
+        try {
+            // Ambil data penjualan ikan berdasarkan ID dari API eksternal
+            $response = Http::withToken($token)->get("http://127.0.0.1:8000/api/penjualan_ikan/{$id}");
+
+            // Pastikan respons sukses
+            if ($response->successful()) {
+                // Menampilkan data penjualan ikan pada halaman detail
+                return view('admin.detail_penjualan', ['data' => $response->json()]);
+            } else {
+                throw new \Exception('Gagal mengambil data penjualan ikan: ' . $response->body());
+            }
+        } catch (\Exception $e) {
+            Log::error('Error fetching penjualan ikan details: ' . $e->getMessage());
+            return redirect()->route('admin.penjualan_ikan')
+                ->withErrors(['error' => 'Gagal mengambil detail penjualan ikan.']);
+        }
+    }
+
+    /**
+     * Menyimpan data penjualan ikan baru.
+     */
+    public function store(Request $request)
+    {
+        $token = session('auth_token');
+
+        // Cek jika token tidak ada
+        if (!$token) {
+            return redirect()->route('showLogin')
+                ->withErrors(['error' => 'Anda harus login terlebih dahulu.']);
+        }
+
+        // Validasi token melalui API
+        $validToken = $this->validateToken($token);
+        if (!$validToken) {
+            return redirect()->route('showLogin')
+                ->withErrors(['error' => 'Token tidak valid, silakan login kembali.']);
+        }
+
         // Validasi input dari form
         $validated = $request->validate([
             'nama_ikan' => 'required|string|max:255', // Nama ikan wajib diisi dan berupa string dengan panjang maksimal 255 karakter
@@ -72,7 +107,7 @@ class PenjualanIkanController extends Controller
             'nama_kolam' => 'required|string',         // Nama kolam wajib diisi dan berupa string
             'jumlah_penjualan' => 'required|integer',  // Jumlah penjualan wajib diisi dan berupa integer
         ]);
-    
+
         try {
             // Kirim data penjualan ikan ke API eksternal
             $response = Http::withToken($token)->post('http://127.0.0.1:8000/api/penjualan_ikan', [
@@ -81,7 +116,7 @@ class PenjualanIkanController extends Controller
                 'nama_kolam' => $validated['nama_kolam'],        // Menggunakan nama kolam dari input
                 'jumlah_penjualan' => $validated['jumlah_penjualan'],
             ]);
-    
+
             // Cek apakah response berhasil
             if ($response->successful()) {
                 return redirect()->route('data_keluar') // Redirect ke halaman data_keluar.blade.php setelah berhasil
@@ -100,7 +135,7 @@ class PenjualanIkanController extends Controller
                 ->withErrors(['error' => 'Gagal menambahkan penjualan ikan.']);
         }
     }
-    
+
 
     /**
      * Menghapus data penjualan ikan.
